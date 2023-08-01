@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="ul">
+      <li style="font-weight: bold; list-style: none; font-size: 20px">
+        LISTA DE PRODUTOS
+      </li>
+    </ul>
+
+    <h1 style="font-weight: bold; list-style: none; font-size: 20px">
+      CADASTRAR
+    </h1>
+    <input type="text" id="id" value="id" />
+    <input type="text" id="description" value="description" />
+    <input type="text" id="title" value="title" />
+    <input type="text" id="price" value="price" />
+    <input type="button" id="id" value="CADASTRAR" onclick="cadastrar()" />
+
+    <script>
+      function cadastrar() {
+        const id = document.getElementById(`id`).value;
+        const title = document.getElementById(`title`).value;
+        const description = document.getElementById(`description`).value;
+        const price = document.getElementById(`price`).value;
+
+        let produto = {
+          id: id,
+          title: title,
+          description: description,
+          price: price,
+        };
+
+        fetch("http://localhost:4000/products", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(produto),
+        })
+        .then((resposta) => {
+        console.log(produto);
+        getProducts()}
+        );
+      }
+
+      getProducts();
+      function getProducts() {
+        fetch("http://localhost:4000/products", {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+          },
+        })
+          .then((resposta) => resposta.json())
+          .then((produtos) => {
+            //capturo o UL da pagina no meu codigo javascript
+            const ul = document.getElementById("ul");
+
+            //loop mais externo forEach: irá percorrer os produtos
+            produtos.forEach((produto) => {
+              //crio o nó de texto
+              const dadoItem = document.createTextNode(
+                ` ${produto.id}   ${produto.title}   ${produto.price}  ${produto.description}`
+              );
+
+              //cria uma LI e depois insere o nó de texto do produto
+              let li = document.createElement("li");
+              li.appendChild(dadoItem);
+
+              //insere a LI no UL
+              ul.appendChild(li);
+            });
+          });
+      }
+    </script>
+  </body>
+</html>
