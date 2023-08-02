@@ -1,13 +1,13 @@
 # json-server-demo
 json-server api 
 
-playlist tutorial original (em inglês): https://www.youtube.com/playlist?list=PLC3y8-rFHvwhc9YZIdqNL5sWeTCGxF4ya
+playlist tutorial original (em inglês): https://www.youtube.com/playlist?list=PLC3y8-rFHvwhc9YZIdqNL5sWeTCGxF4ya <br>
 
-1 -link customizado c/ db.json customizado para este exercício: https://github.com/gopinav/json-server-tutorials/tree/master
-2 -link json-server original: https://github.com/typicode/json-server
-3 -link jsonlint validador de JSON: https://jsonlint.com/
-4 -link vercel (hospedagem de API): https://vercel.com/
-5 -link json-server já configurado para o vercel: https://github.com/kitloong/json-server-vercel
+1 -link customizado c/ db.json customizado para este exercício: https://github.com/gopinav/json-server-tutorials/tree/master <br>
+2 -link json-server original: https://github.com/typicode/json-server<br>
+3 -link jsonlint validador de JSON: https://jsonlint.com/<br>
+4 -link vercel (hospedagem de API): https://vercel.com/<br>
+5 -link json-server já configurado para o vercel: https://github.com/kitloong/json-server-vercel<br>
 
 AULA JSON-SERVER LOCAL:
 
@@ -33,87 +33,87 @@ http://127.0.0.1:4000/reviews/1
 
 *********** requisições do tipo GET - BUSCAR DADOS
 
-***filtrando dados:
-por categoria:
-http://127.0.0.1:4000/products?category=electronics
+***filtrando dados:<br>
+por categoria:<br>
+http://127.0.0.1:4000/products?category=electronics<br>
 
-*o produto 10 tem uma propriedade especial discount shipping, podemos filtrar por ela:
-http://127.0.0.1:4000/products?category=electronics&discount.type=shipping
+*o produto 10 tem uma propriedade especial discount shipping, podemos filtrar por ela:<br>
+http://127.0.0.1:4000/products?category=electronics&discount.type=shipping<br>
 
-****organizando dados - sort
-http://127.0.0.1:4000/products?_sort=price  
+****organizando dados - sort<br>
+http://127.0.0.1:4000/products?_sort=price  <br>
 
-http://127.0.0.1:4000/products?_sort=price&_order=desc
+http://127.0.0.1:4000/products?_sort=price&_order=desc<br>
 
-*** mais um nivel de ordenação incluindo a categoria
-http://127.0.0.1:4000/products?_sort=price,category&_order=desc,asc
+*** mais um nivel de ordenação incluindo a categoria<br>
+http://127.0.0.1:4000/products?_sort=price,category&_order=desc,asc<br>
 
-*** paginação
-http://127.0.0.1:4000/products?_page=1
-http://127.0.0.1:4000/products?_page=2
+*** paginação<br>
+http://127.0.0.1:4000/products?_page=1<br>
+http://127.0.0.1:4000/products?_page=2<br>
 
-**especificando o tamanho da pagina:
-http://127.0.0.1:4000/products?_page=1&_limit=2
-http://127.0.0.1:4000/products?_page=2&_limit=2
+**especificando o tamanho da pagina:<br>
+http://127.0.0.1:4000/products?_page=1&_limit=2<br>
+http://127.0.0.1:4000/products?_page=2&_limit=2<br>
 
-http://127.0.0.1:4000/products?_page=1&_limit=5
-http://127.0.0.1:4000/products?_page=2&_limit=5
+http://127.0.0.1:4000/products?_page=1&_limit=5<br>
+http://127.0.0.1:4000/products?_page=2&_limit=5<br>
 
 **** entrar no inspector > network > link: é possivel ver a primeira pagina, próxima pagina e última pagina
 
-***operadores
-**especificando um range de busca para aquela propriedade
-http://localhost:4000/products?price_gte=2000&price_lte=6000
-GTE = greather than or equal -> maior ou igual
-LTE = less than or equal -> menor ou igual
+***operadores<br>
+**especificando um range de busca para aquela propriedade<br>
+http://localhost:4000/products?price_gte=2000&price_lte=6000<br>
+GTE = greather than or equal -> maior ou igual<br>
+LTE = less than or equal -> menor ou igual<br>
 
-** operador NOT EQUAL (NÃO IGUAL)
-http://localhost:4000/products?id_ne=1
-** id not equal to 1 -. vai listar os produtos cuja ID é diferente de 1
+** operador NOT EQUAL (NÃO IGUAL)<br>
+http://localhost:4000/products?id_ne=1<br>
+** id not equal to 1 -. vai listar os produtos cuja ID é diferente de 1<br>
 
 **operador LIKE
-** filtrando os produtos pela categoria começando com f
-http://localhost:4000/products?category_like=^f
+** filtrando os produtos pela categoria começando com f<br>
+http://localhost:4000/products?category_like=^f<br>
 
-**BUSCA POR TEXTO FULL
-http://localhost:4000/products?q=in
+**BUSCA POR TEXTO FULL<br>
+http://localhost:4000/products?q=in<br>
 
-**RELACIONAMENTOS (JOIN) - irá listar os produtos incluindo as informações dos reviews daquele produto
-http://localhost:4000/products?_embed=reviews  -> TODOS OS PRODUTOS INCLUINDO REVIEWS
-http://localhost:4000/products?_embed=reviews -> SOMENTE O PRODUTO 1 INCLUINDO SUAS REVIEWS
-
-
-**RELACIONAMENTOS (EXPAND) - irá listar os reviews e expandir os produtos aos quais eles estão relacionados
-http://localhost:4000/reviews?_expand=product  -> irá listar as reviews e os produtos aos quais eles estão relacionados
-http://localhost:4000/reviews/1?_expand=product -> irá listar somente a review 1 e os produtos aos quais eles estão relacionados
+**RELACIONAMENTOS (JOIN) - irá listar os produtos incluindo as informações dos reviews daquele produto<br>
+http://localhost:4000/products?_embed=reviews  -> TODOS OS PRODUTOS INCLUINDO REVIEWS<br>
+http://localhost:4000/products?_embed=reviews -> SOMENTE O PRODUTO 1 INCLUINDO SUAS REVIEWS<br>
 
 
-************** requisição do tipo POST - INCLUIR UM NOVO REGISTRO
-1- instalar extensão THUNDER CLIENT no VSCode
-2- na barra lateral esquerda clicar no novo icone
-3- new request
-4- colocar url http://localhost:4000/products
-5- mudar método para POST
-6- selecionar BODY, e em seguida, a aba JSON
-7- copiar a estutura de um objeto e colocar aqui, depois alterar os dados para o onbjeto que eu quero INCLUIR
-8- clicar em SEND e verificar a resposta (RESPONSE, na lateral direita)
-
-************** requisição do tipo PUT - ALTERAR UM REGISTRO (necessário enviar o novo objeto completo)
-1- alterar o tipo de requisição para PUT no Thunder Client
-2- incluir a ID do registro a ser alterado no URL, irá ficar assim exemplo: http://localhost:4000/products/11
-3- selecionar BODY, e em seguida, a aba JSON
-4 - colar o objeto a ser alterado, efetuar as modificações desejadas e clicar em SEND
-5- verificar a resposta (RESPONSE, na lateral direita)
+**RELACIONAMENTOS (EXPAND) - irá listar os reviews e expandir os produtos aos quais eles estão relacionados<br>
+http://localhost:4000/reviews?_expand=product  -> irá listar as reviews e os produtos aos quais eles estão relacionados<br>
+http://localhost:4000/reviews/1?_expand=product -> irá listar somente a review 1 e os produtos aos quais eles estão relacionados<br>
 
 
-***************** requisição do tipo PATCH - ALTERAR SOMENTE UM CAMPO ESPECÍFICO DE UM REGISTRO
-1- alterar o tipo de requisição para PATCH no Thunder Client
-2- incluir a ID do registro a ser alterado no URL, irá ficar assim exemplo: http://localhost:4000/products/11
-3- selecionar BODY, e em seguida, a aba JSON
-4 - digitar aqui comente o que irá a ser alterado no objeto, por exemplo, para alterar o preço : { "price": 4000 }
-5- clicar em SEND e verificar a resposta (RESPONSE, na lateral direita)
+************** requisição do tipo POST - INCLUIR UM NOVO REGISTRO<br>
+1- instalar extensão THUNDER CLIENT no VSCode<br>
+2- na barra lateral esquerda clicar no novo icone<br>
+3- new request<br>
+4- colocar url http://localhost:4000/products<br>
+5- mudar método para POST<br>
+6- selecionar BODY, e em seguida, a aba JSON<br>
+7- copiar a estutura de um objeto e colocar aqui, depois alterar os dados para o onbjeto que eu quero INCLUIR<br>
+8- clicar em SEND e verificar a resposta (RESPONSE, na lateral direita)<br>
 
-*************** requisição do tipo DELETE - APAGAR UM REGISTRO
-1- alterar o tipo de requisição para DELETE no Thunder Client
-2- incluir a ID do registro a ser DELETADO no URL, irá ficar assim exemplo: http://localhost:4000/products/11
-3- clicar em SEND e verificar a resposta (RESPONSE, na lateral direita)
+************** requisição do tipo PUT - ALTERAR UM REGISTRO (necessário enviar o novo objeto completo)<br>
+1- alterar o tipo de requisição para PUT no Thunder Client<br>
+2- incluir a ID do registro a ser alterado no URL, irá ficar assim exemplo: http://localhost:4000/products/11<br>
+3- selecionar BODY, e em seguida, a aba JSON<br>
+4 - colar o objeto a ser alterado, efetuar as modificações desejadas e clicar em SEND<br>
+5- verificar a resposta (RESPONSE, na lateral direita)<br>
+
+
+***************** requisição do tipo PATCH - ALTERAR SOMENTE UM CAMPO ESPECÍFICO DE UM REGISTRO<br>
+1- alterar o tipo de requisição para PATCH no Thunder Client<br>
+2- incluir a ID do registro a ser alterado no URL, irá ficar assim exemplo: http://localhost:4000/products/11<br>
+3- selecionar BODY, e em seguida, a aba JSON<br>
+4 - digitar aqui comente o que irá a ser alterado no objeto, por exemplo, para alterar o preço : { "price": 4000 }<br>
+5- clicar em SEND e verificar a resposta (RESPONSE, na lateral direita)<br>
+
+*************** requisição do tipo DELETE - APAGAR UM REGISTRO<br>
+1- alterar o tipo de requisição para DELETE no Thunder Client<br>
+2- incluir a ID do registro a ser DELETADO no URL, irá ficar assim exemplo: http://localhost:4000/products/11<br>
+3- clicar em SEND e verificar a resposta (RESPONSE, na lateral direita)<br>
